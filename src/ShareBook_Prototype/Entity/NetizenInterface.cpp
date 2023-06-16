@@ -19,3 +19,4 @@ string NetizenInterface::get_id() {
 	// TODO - implement NetizenInterface::get_id
 	throw "Not yet implemented";
 }
+
