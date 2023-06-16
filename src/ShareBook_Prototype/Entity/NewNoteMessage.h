@@ -5,7 +5,7 @@ class NewNoteMessage : Message {
 
 
 public:
-	string toString();
+    std::string toString();
 };
 
 #endif

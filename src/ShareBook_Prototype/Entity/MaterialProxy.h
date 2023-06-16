@@ -1,6 +1,8 @@
 #ifndef MATERIALPROXY_H
 #define MATERIALPROXY_H
 
+#include "Material.h"
+
 class MaterialProxy : MaterialInterface {
 
 public:
