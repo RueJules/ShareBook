@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="/ShareBook_Prototype">
-    <file alias="qmldir">/run/media/root/data/ShareBook/src/build-ShareBook_Prototype-Desktop_Qt_6_5_1_GCC_64bit-Debug/ShareBook_Prototype/qmldir</file>
-  </qresource>
-</RCC>
-
