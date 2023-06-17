@@ -43,6 +43,8 @@ set_target_properties(appShareBook_Prototype PROPERTIES
 target_link_libraries(appShareBook_Prototype
     PRIVATE 
         Qt6::Quick
+    PUBLIC
+        mariadbcpp
 )
 
 install(TARGETS appShareBook_Prototype

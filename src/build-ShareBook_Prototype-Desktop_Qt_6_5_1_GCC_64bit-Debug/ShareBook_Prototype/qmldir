@@ -1,0 +1,5 @@
+module ShareBook_Prototype
+typeinfo appShareBook_Prototype.qmltypes
+prefer :/ShareBook_Prototype/
+Main 1.0 Main.qml
+

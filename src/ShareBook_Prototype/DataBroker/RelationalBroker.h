@@ -1,20 +1,21 @@
-#ifndef RELATIONALBROKER_H
-#define RELATIONALBROKER_H
+#ifndef DATABASE_H
+#define DATABASE_H
+#include <string>
+#include <mariadb/conncpp.hpp>
+#include <memory>
 
-class RelationalBroker : DataBaseBroker {
-
+class DataBase
+{
 public:
-	unique_ptr<sql::Connection> m_connection;
-
-	void initDataBase();
-
-	sql::ResultSet* query(string cmd);
-
-	void insert(string cmd);
-
-	virtual void update() = 0;
-
-	void drop(string cmd);
+    DataBase();
+    //void connectDB();
+    void insert();
+private:
+    int id;
+    std::string des = "Everday is painful";
+    int completed;
+    std::unique_ptr<sql::Connection> m_conn;
 };
 
-#endif
+#endif // DATABASE_H
+

@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/ShareBook_Prototype/">
+    <file alias="Main.qml">/run/media/root/data/ShareBook/src/ShareBook_Prototype/Main.qml</file>
+  </qresource>
+</RCC>
+
