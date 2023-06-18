@@ -1,11 +1,11 @@
 #ifndef NEWNOTEMESSAGE_H
 #define NEWNOTEMESSAGE_H
+#include "Message.h"
 
-class NewNoteMessage : Message {
-
-
+class NewNoteMessage : public Message {
 public:
-    std::string toString();
+    QString toString();
+    NewNoteMessage(QDate date, int sender, QByteArray profile);
 };
 
 #endif

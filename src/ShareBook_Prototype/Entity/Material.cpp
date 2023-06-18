@@ -1,11 +1,24 @@
+/*Auther:Huangyihong
+Date:2023.6.17*/
+
 #include "Material.h"
 
-ByteArray Material::get_image() {
+Material::Material()
+{
+
+}
+
+Material::Material(QByteArray img, int order)
+{
+
+}
+
+QByteArray Material::get_image() {
 	// TODO - implement Material::get_image
 	throw "Not yet implemented";
 }
 
-void Material::set_image(ByteArray m_image) {
+void Material::set_image(QByteArray image) {
 	// TODO - implement Material::set_image
 	throw "Not yet implemented";
 }

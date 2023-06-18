@@ -1,12 +1,21 @@
+/*Auther:Huangyihong
+Date:2023.6.17*/
+
 #ifndef MESSAGEPROXY_H
 #define MESSAGEPROXY_H
+#include "Message.h"
+#include <QString>
 
 class MessageProxy : MessageInterface {
 
 public:
-	Message* m_message;
+    QString readMessage();
+    MessageProxy();
+    MessageProxy(Message message);
+    void setMessage(Message message);
 
-	void getMessage();
+private:
+    Message* m_message;
 };
 
 #endif

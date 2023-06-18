@@ -1,16 +1,25 @@
+/*Auther:Huangyihong
+Date:2023.6.17*/
+
 #ifndef MATERIAL_H
 #define MATERIAL_H
+#include <QByteArray>
+#include "materialinterface.h"
 
 class Material : MaterialInterface {
 
-private:
-	ByteArray m_image;
-	string m_identifier;
-
 public:
-	ByteArray get_image();
+    Material();
+    Material(QByteArray img, int order);
 
-	void set_image(ByteArray m_image);
+    QByteArray get_image();  //获取当前素材的内容
+    void set_image(QByteArray image);
+
+private:
+    QByteArray m_image; //当前素材的内容（图片）
+    int number; //图片所属顺序
+
+
 };
 
 #endif
