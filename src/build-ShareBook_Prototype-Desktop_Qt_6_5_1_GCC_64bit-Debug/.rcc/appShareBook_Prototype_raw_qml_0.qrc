@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="/ShareBook_Prototype/">
+    <file alias="/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype/./UI/EditDialog.qml">/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype/./UI/EditDialog.qml</file>
+    <file alias="/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype/./UI/Main.qml">/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype/./UI/Main.qml</file>
+    <file alias="image.qrc">/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype/image.qrc</file>
+  </qresource>
+</RCC>
+

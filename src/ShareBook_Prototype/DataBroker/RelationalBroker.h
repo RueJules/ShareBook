@@ -3,8 +3,8 @@
 #include <string>
 #include <mariadb/conncpp.hpp>
 #include <memory>
-
-class DataBase
+#include"DataBaseBroker.h"
+class RelationalBroker:public DataBaseBroker
 {
 public:
     DataBase();

@@ -8,17 +8,16 @@ qt_standard_project_setup()
 
 qt_add_executable(appShareBook_Prototype)
 
-#aux_source_directory(.sources)
-aux_source_directory(Entity source)
-aux_source_directory(DataBroker source)
-aux_source_directory(Control source)
-
+FILE(GLOB_RECURSE header CONFIGURE_DEPENDS include ./*.h)
+FILE(GLOB_RECURSE source CONFIGURE_DEPENDS include ./*.cpp)
+FILE(GLOB_RECURSE qml CONFIGURE_DEPENDS include ./*.qml)
 target_sources(appShareBook_Prototype
     PRIVATE
         main.cpp
         
     PUBLIC
         ${source}
+        ${header}
         
 )
 
@@ -26,7 +25,8 @@ qt_add_qml_module(appShareBook_Prototype
     URI ShareBook_Prototype
     VERSION 1.0
     QML_FILES 
-        Main.qml
+        ${qml}
+        image.qrc
 )
 
 target_compile_features(appShareBook_Prototype PRIVATE cxx_std_20)

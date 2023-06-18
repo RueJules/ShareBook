@@ -1,31 +1,53 @@
+/*
+ * datetime:2023-6-17
+ * author:chenzexi
+*/
 #include "Netizen.h"
 
-string Netizen::get_nickName() {
-	// TODO - implement Netizen::get_nickName
-	throw "Not yet implemented";
+void Netizen::addNote(QString noteId, NoteProxy note)
+{
+
 }
 
-ByteArray Netizen::get_profileImage() {
-	// TODO - implement Netizen::get_profileImage
-	throw "Not yet implemented";
+void Netizen::addFan(QString fanId, NetizenProxy fan)
+{
+
 }
 
-vector<string> Netizen::get_pulishNoteIdList() {
-	// TODO - implement Netizen::get_pulishNoteIdList
-	throw "Not yet implemented";
+void Netizen::addConcern(QString concernId, NetizenProxy concern)
+{
+
 }
 
-vector<string> Netizen::get_fanIdList() {
-	// TODO - implement Netizen::get_fanIdList
-	throw "Not yet implemented";
+QString Netizen::get_nickName()
+{
+
 }
 
-vector<string> Netizen::get_concernIdList() {
-	// TODO - implement Netizen::get_concernIdList
-	throw "Not yet implemented";
+QPixmap Netizen::get_profileImage()
+{
+
 }
 
-void Netizen::addMessage(string megId, MessageProxy message) {
-	// TODO - implement Netizen::addMessage
-	throw "Not yet implemented";
+void Netizen::get_publishNoteIdList()
+{
+    //获取当前笔记map中的id和对应的proxy如果proxy中没有实例就取数据库中找
+    //查看发布的所有笔记会调用
 }
+
+void Netizen::get_fanIdList()
+{
+    //查看粉丝列表会调用
+}
+
+void Netizen::get_concernIdList()
+{
+    //查看关注列表会调用
+}
+
+void Netizen::addMessage(int megId, MessageProxy message)
+{
+
+}
+
+
