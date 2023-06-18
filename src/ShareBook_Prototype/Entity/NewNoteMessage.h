@@ -4,7 +4,7 @@
 
 class NewNoteMessage : public Message {
 public:
-    QString toString();
+    std::string toString();
     NewNoteMessage(QDate date, int sender, QByteArray profile);
 };
 

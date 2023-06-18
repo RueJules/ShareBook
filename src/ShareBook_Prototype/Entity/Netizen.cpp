@@ -4,7 +4,7 @@
 */
 #include "Netizen.h"
 
-Netizen::Netizen(int id, QString psw, QString nickname, QPixmap profile, std::unordered_map<int, NoteProxy> &publishl, std::unordered_map<int, NetizenProxy> &fanl, std::unordered_map<int, NetizenProxy> &concernl, std::unordered_map<int, MessageProxy> messagel):NetizenInterface(id)
+Netizen::Netizen(int id, std::string psw, std::string nickname, QPixmap profile, std::unordered_map<int, NoteProxy> &publishl, std::unordered_map<int, NetizenProxy> &fanl, std::unordered_map<int, NetizenProxy> &concernl, std::unordered_map<int, MessageProxy> messagel):NetizenInterface(id)
 {
     //初始化赋值
 }
@@ -27,7 +27,7 @@ void  Netizen::addMessage(int messageId, MessageProxy message){
     m_messageList.emplace(messageId,message);
 }
 
-QString Netizen::get_nickName()
+std::string Netizen::get_nickName()
 {
 
 }

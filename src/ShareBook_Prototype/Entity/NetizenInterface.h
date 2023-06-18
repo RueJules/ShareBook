@@ -4,7 +4,7 @@
 */
 #ifndef NETIZENINTERFACE_H
 #define NETIZENINTERFACE_H
-#include<QString>
+#include<string>
 class NotePorxy;
 class NetizenProxy;
 class MessageProxy;

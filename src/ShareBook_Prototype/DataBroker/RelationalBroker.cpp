@@ -15,7 +15,7 @@ RelationalBroker::RelationalBroker()
     m_conn=std::move(conn);
 }
 
-sql::ResultSet* RelationalBroker::query(QString cmd)
+sql::ResultSet* RelationalBroker::query(std::string cmd)
 {
     try{
         std::unique_ptr<sql::PreparedStatement> stmntQ(m_conn->prepareStatement(cmd));
@@ -28,7 +28,7 @@ sql::ResultSet* RelationalBroker::query(QString cmd)
     return nullptr;
 }
 
-void RelationalBroker::insert(QString cmd)
+void RelationalBroker::insert(std::string cmd)
 {
     try{
     // Create a new PreparedStatement
@@ -44,7 +44,7 @@ void RelationalBroker::insert(QString cmd)
     }
 }
 
-void RelationalBroker::update(QString cmd)
+void RelationalBroker::update(std::string cmd)
 {
     try{
         // Create a new PreparedStatement
@@ -58,7 +58,7 @@ void RelationalBroker::update(QString cmd)
     }
 }
 
-void RelationalBroker::drop(QString cmd)
+void RelationalBroker::drop(std::string cmd)
 {
     try{
         // Create a new PreparedStatement

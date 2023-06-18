@@ -4,12 +4,12 @@ Date:2023.6.17*/
 #ifndef MESSAGEPROXY_H
 #define MESSAGEPROXY_H
 #include "Message.h"
-#include <QString>
+#include <string>
 
 class MessageProxy : MessageInterface {
 
 public:
-    QString readMessage();
+    std::string readMessage();
     MessageProxy();
     MessageProxy(Message &message);
     void setMessage(Message &message);

@@ -52,17 +52,17 @@ Netizen NetizenBroker::findById(int Id) {
     throw "Not yet implemented";
 }
 
-Netizen NetizenBroker::matchAccount(int id, QString psw)
+Netizen NetizenBroker::matchAccount(int id, std::string psw)
 {
     //匹配id和密码是否正确,获取结果集, 匹配成功就进行初始化
-    QString cmd="select * from netizen where id="+id+"and password="+psw;
+    std::string cmd="select * from netizen where id="+std::to_string(id)+"and password="+psw;
     ResultSet *resultSet =query(cmd);
     if (result.getRow() == 0){
         //todo: 提示网民用户名或密码不正确
     }
     //处理结果集
     //获取当前这条数据各个字段的值
-    QString nickname = resultSet.getObject(3);
+    std::string nickname = resultSet.getObject(3);
     //读取头像
     //QPixmap photo；photo.loadFromData(resultSet.getObject(4).toByteArray(), "JPG")
     //读每个列表（如果列表数量为0就不读）如果不为0 就拿着网民的id去对应关系的表中找粉丝、关注者、发布的笔记、消息的id
@@ -72,8 +72,8 @@ Netizen NetizenBroker::matchAccount(int id, QString psw)
     int notes=resultSet.getObject(8);
 
     if(concerns){
-        QString cmd="select concern_id from netizen_concerns where netizen_id="+id;
-        ResultSet *resultSet =query(cmd);
+        std::string cmd="select concern_id from netizen_concerns where netizen_id="+std::to_string(id);
+        sql::ResultSet *resultSet =query(cmd);
         std::unordered_map<int, NetizenProxy> *concerns=new std::unordered_map<int, NetizenProxy>();
         while(resultSet->next()){
             int concern=resultSet.getObject(1);
@@ -82,7 +82,7 @@ Netizen NetizenBroker::matchAccount(int id, QString psw)
         }
     }
     if(fans){
-        QString cmd="select fan_id from netizen_fans where netizen_id="+id;
+        std::string cmd="select fan_id from netizen_fans where netizen_id="+id;
         ResultSet *resultSet =query(cmd);
         std::unordered_map<int, NetizenProxy> *fans=new std::unordered_map<int, NetizenProxy>();
         while(resultSet->next()){
@@ -92,7 +92,7 @@ Netizen NetizenBroker::matchAccount(int id, QString psw)
         }
     }
     if(messages){
-        QString cmd="select id from message where recipient="+id;
+        std::string cmd="select id from message where recipient="+id;
         ResultSet *resultSet =query(cmd);
         std::unordered_map<int, MessageProxy> *messages=new std::unordered_map<int, MessageProxy>();
         while(resultSet->next()){
@@ -102,8 +102,8 @@ Netizen NetizenBroker::matchAccount(int id, QString psw)
         }
     }
     if(notes){
-        QString cmd="select note_id from published_note where blogger_id="+id;
-        ResultSet *resultSet =query(cmd);
+        std::string cmd="select note_id from published_note where blogger_id="+id;
+        sql::ResultSet *resultSet =query(cmd);
         std::unordered_map<int, NoteProxy> *notes=new std::unordered_map<int, NoteProxy>();
         while(resultSet->next()){
             int note=resultSet.getObject(1);

@@ -1,6 +1,6 @@
 #include "NewNoteMessage.h"
 
-QString NewNoteMessage::toString() {
+std::string NewNoteMessage::toString() {
     // TODO - implement NewNoteMessage::toString
     throw "Not yet implemented";
 }

@@ -7,7 +7,7 @@
 #include <QFileDialog>
 
 
-void Control::init(int id=1, QString password="123456")
+void Control::init(int id=1, std::string password="123456")
 {
     std::shared_ptr netizen=NetizenBroker::getInstance(); //单例broker
     //m_localNetizen=netizen->matchAccount(id,password);
@@ -28,7 +28,7 @@ void Control::sendMessage() {
     //m_localNeitizenProxy.sendMessage(message);
 }
 
-int Control::createNote(QString title, QString text, std::vector<Material> metrial, int blogger)//从ui传来的用户输入的笔记数据，现在不做，现在是选择一个文件（一个txt文本文件和几个图片文件）
+int Control::createNote(std::string title, std::string text, std::vector<Material> metrial, int blogger)//从ui传来的用户输入的笔记数据，现在不做，现在是选择一个文件（一个txt文本文件和几个图片文件）
 {
     //使用文件管理器进行文件的选择组成一个笔记
 

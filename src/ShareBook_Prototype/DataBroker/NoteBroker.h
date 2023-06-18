@@ -3,6 +3,7 @@
 #include "../Entity/Note.h"
 #include "RelationalBroker.h"
 #include <vector>
+#include <mutex>
 
 
 class NoteBroker : RelationalBroker {

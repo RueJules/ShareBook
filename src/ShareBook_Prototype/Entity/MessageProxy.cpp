@@ -3,7 +3,7 @@ Date:2023.6.17*/
 
 #include "MessageProxy.h"
 
-QString MessageProxy::readMessage() {
+std::string MessageProxy::readMessage() {
     // TODO - implement MessageProxy::getMessage
     throw "Not yet implemented";
 }

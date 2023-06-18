@@ -15,14 +15,14 @@ class Netizen : public NetizenInterface {
 
 public:
     //构造函数
-    Netizen(int id, QString psw, QString nickname, QPixmap profile, std::unordered_map<int, NoteProxy> &publishl, std::unordered_map<int, NetizenProxy> &fanl, std::unordered_map<int, NetizenProxy> &concernl, std::unordered_map<int, MessageProxy> messagel);
+    Netizen(int id, std::string psw, std::string nickname, QPixmap profile, std::unordered_map<int, NoteProxy> &publishl, std::unordered_map<int, NetizenProxy> &fanl, std::unordered_map<int, NetizenProxy> &concernl, std::unordered_map<int, MessageProxy> messagel);
 
     void addNote(int noteId, NoteProxy note) override;//添加新发布的笔记，应该是返回bool类型？？
     void addFan(int fanId, NetizenProxy fan) override;//添加新的分析
     void addConcern(int concernId, NetizenProxy concern) override;//添加新的关注
     void addMessage(int messageId, MessageProxy message) override;//添加新的消息
 
-    QString get_nickName();
+    std::string get_nickName();
     QPixmap get_profileImage();
     void get_publishNoteIdList();
     void get_fanIdList();
@@ -30,8 +30,8 @@ public:
 
 private:
 
-    QString m_password;
-    QString m_nickName;
+    std::string m_password;
+    std::string m_nickName;
     QPixmap m_profileImage;
     std::unordered_map<int, NoteProxy> m_pulishNoteList;
     std::unordered_map<int, NetizenProxy> m_fanList;

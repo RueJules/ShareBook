@@ -1,6 +1,5 @@
 #ifndef NOTEINTERFACE_H
 #define NOTEINTERFACE_H
-#include <QString>
 
 class NoteInterface {
 

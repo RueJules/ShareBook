@@ -7,7 +7,7 @@
     vector<string> m_keyword;
     QDateTime m_time;
  */
-Note::Note(int id, int blogger, QString title, QString text, std::vector<Material> materials, int material,QDateTime time)
+Note::Note(int id, int blogger, std::string title, std::string text, std::vector<Material> materials, int material,QDateTime time)
     :NoteInterface(id),m_blogger{blogger},m_title{title},m_text(text), m_material{material}, m_materials{materials},m_time{time}
 {
 
@@ -19,13 +19,13 @@ int Note::get_blogger() {
     return m_blogger;
 }
 
-QString Note::get_title() {
+std::string Note::get_title() {
 	// TODO - implement Note::get_title
 	throw "Not yet implemented";
     return m_title;
 }
 
-QString Note::get_text() {
+std::string Note::get_text() {
 	// TODO - implement Note::get_text
 	throw "Not yet implemented";
     return m_text;
