@@ -1,7 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-
+#include"Control/Control.h"
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -12,6 +12,11 @@ int main(int argc, char *argv[])
         &app, []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
     engine.load(url);
+
+    Control *control=new Control();
+    control->init();
+    control->createNote();
+    control->sendMessage();
 
     return app.exec();
 }

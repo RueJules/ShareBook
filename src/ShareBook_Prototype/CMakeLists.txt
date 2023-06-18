@@ -29,6 +29,9 @@ qt_add_qml_module(appShareBook_Prototype
         image.qrc
 )
 
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
+target_link_libraries(appShareBook_Prototype PRIVATE Qt6::Widgets)
+
 target_compile_features(appShareBook_Prototype PRIVATE cxx_std_20)
 
 set_target_properties(appShareBook_Prototype PROPERTIES
@@ -43,6 +46,7 @@ set_target_properties(appShareBook_Prototype PROPERTIES
 target_link_libraries(appShareBook_Prototype
     PRIVATE 
         Qt6::Quick
+
     PUBLIC
         mariadbcpp
 )
