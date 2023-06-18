@@ -61,7 +61,7 @@ CMakeLists.txt.user*
 *vcxproj.*
 
 # MinGW generated files
-*.Debug
+*./src/Debug
 *.Release
 
 # Python byte code
