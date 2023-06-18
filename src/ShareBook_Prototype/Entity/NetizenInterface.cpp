@@ -20,3 +20,8 @@ string NetizenInterface::get_id() {
 	throw "Not yet implemented";
 }
 
+
+NetizenInterface::NetizenInterface(int id):m_id(id)
+{
+
+}

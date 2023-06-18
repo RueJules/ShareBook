@@ -8,7 +8,7 @@ Material::Material()
 
 }
 
-Material::Material(QByteArray img, int order)
+Material::Material(int id, QByteArray img, int order):MaterialInterface(id)
 {
 
 }

@@ -8,7 +8,12 @@ MaterialProxy::MaterialProxy()
 
 }
 
-MaterialProxy::MaterialProxy(Material *material)
+MaterialProxy::MaterialProxy(Material &material):m_material(material)
+{
+
+}
+
+void MaterialProxy::setMaterial(Material &mtr)
 {
 
 }

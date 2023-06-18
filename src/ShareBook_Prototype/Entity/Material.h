@@ -10,7 +10,7 @@ class Material : MaterialInterface {
 
 public:
     Material();
-    Material(QByteArray img, int order);
+    Material(int id, QByteArray img, int order);
 
     QByteArray get_image();  //获取当前素材的内容
     void set_image(QByteArray image);

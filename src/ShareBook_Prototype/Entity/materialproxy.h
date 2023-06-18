@@ -10,12 +10,12 @@ class MaterialProxy
 {
 public:
     MaterialProxy();
-    MaterialProxy(Material* material);
-    void setMaterial(Material mtr);
+    MaterialProxy(Material &material);
+    void setMaterial(Material &mtr);
     //void preview()
 
 private:
-    Material* _material; //持有一个素材实例
+    Material* m_material; //持有一个素材实例
 };
 
 #endif // MATERIALPROXY_H

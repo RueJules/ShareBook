@@ -19,6 +19,11 @@ void Netizen::addConcern(QString concernId, NetizenProxy concern)
 
 }
 
+Netizen::Netizen(int id, QString psw, QString nickname, QPixmap profile, std::unordered_map<int, NoteProxy> &publishl, std::unordered_map<int, NetizenProxy> &fanl, std::unordered_map<int, NetizenProxy> &concernl, std::unordered_map<int, MessageProxy> messagel):NetizenInterface(id)
+{
+    //初始化赋值
+}
+
 QString Netizen::get_nickName()
 {
 

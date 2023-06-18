@@ -13,7 +13,7 @@ public:
     int get_id();
 
 private:
-    int id; //素材id
+    int m_id; //素材id
 };
 
 #endif // MATERIALINTERFACE_H

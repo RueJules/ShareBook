@@ -1,13 +1,15 @@
 #ifndef NOTEINTERFACE_H
 #define NOTEINTERFACE_H
+#include <QString>
 
 class NoteInterface {
 
 private:
-	string m_id;
+   int m_id;
 
 public:
-	string get_Id();
+    NoteInterface(int id);
+    int get_Id();
 };
 
 #endif

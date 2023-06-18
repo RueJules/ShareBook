@@ -13,10 +13,9 @@ int main(int argc, char *argv[])
         Qt::QueuedConnection);
     engine.load(url);
 
-    Control *control=new Control();
-    control->init();
-    control->createNote();
-    control->sendMessage();
+    Control *control=new Control();//控制类启动
+    control->init(); //初始账户
+    control->createNote(); //
 
     return app.exec();
 }

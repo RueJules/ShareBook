@@ -13,12 +13,12 @@ MessageProxy::MessageProxy()
 
 }
 
-MessageProxy::MessageProxy(Message message)
+MessageProxy::MessageProxy(Message &message)
 {
-    m_message = message
+    m_message = message;
 }
 
-void MessageProxy::setMessage(Message message)
+void MessageProxy::setMessage(Message &message)
 {
 
 }

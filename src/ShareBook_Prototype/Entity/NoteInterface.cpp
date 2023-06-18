@@ -1,6 +1,10 @@
 #include "NoteInterface.h"
 
-string NoteInterface::get_Id() {
-	// TODO - implement NoteInterface::get_Id
-	throw "Not yet implemented";
+NoteInterface:: NoteInterface(int id):m_id(id)
+{
+
+}
+
+int NoteInterface::get_Id() {
+    return m_id;
 }

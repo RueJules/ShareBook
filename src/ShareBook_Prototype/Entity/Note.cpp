@@ -1,31 +1,50 @@
 #include "Note.h"
+/*
+ * 	string m_blogger;
+    string m_title;
+    string m_text;
+    vector<Material> m_materials;
+    vector<string> m_keyword;
+    QDateTime m_time;
+ */
+Note::Note(int id, int blogger, QString title, QString text, std::vector<Material> materials, QDateTime time)
+    :NoteInterface(id),m_blogger{blogger},m_title{title},m_text(text), m_materials{materials},m_text{text},m_time{time}
+{
 
-string Note::get_blogger() {
+}
+
+int Note::get_blogger() {
 	// TODO - implement Note::get_blogger
 	throw "Not yet implemented";
+    return m_blogger;
 }
 
-string Note::get_title() {
+QString Note::get_title() {
 	// TODO - implement Note::get_title
 	throw "Not yet implemented";
+    return m_title;
 }
 
-string Note::get_text() {
+QString Note::get_text() {
 	// TODO - implement Note::get_text
 	throw "Not yet implemented";
+    return m_text;
 }
 
-vector<Material> Note::get_materials() {
+std::vector<Material> Note::get_materials() {
 	// TODO - implement Note::get_materials
 	throw "Not yet implemented";
+    return m_materials;
 }
 
-vector<string> Note::get_keyword() {
-	// TODO - implement Note::get_keyword
-	throw "Not yet implemented";
+//std::vector<string> Note::get_keyword() {
+//    // TODO - implement Note::get_keyword
+//    throw "Not yet implemented";
+//    return m_keyword;
+//}
+
+QDateTime Note::get_time()
+{
+    return m_time;
 }
 
-DateTime Note::get_time() {
-	// TODO - implement Note::get_time
-	throw "Not yet implemented";
-}

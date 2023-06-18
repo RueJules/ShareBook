@@ -11,17 +11,17 @@ class MessageBroker : RelationalBroker {
 
 
 public:
-    Message findById(QString Id);//根据id在数据库内查找
-
+    Message findById(int Id);//根据id在数据库内查找
     void storeObject(Message message); //得到消息的所有内容，写入数据库
-
     static MessageBroker instance();
+    ~MessageBroker();
 
 private:
     MessageBroker(); //私有构造函数
 
 private:
-    MessageBroker messagebroker; //单例
+    static std::shared_ptr<MessageBroker> s_messageBroker = nullptr;
+    static std::mutex messageBrokerMutex;//单例
 };
 
 #endif

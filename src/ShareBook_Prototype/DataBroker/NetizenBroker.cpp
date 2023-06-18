@@ -47,12 +47,12 @@ void NetizenBroker::updateObject(Netizen netizen) {
 }
 
 
-Netizen NetizenBroker::findById(string Id) {
+Netizen NetizenBroker::findById(int Id) {
     // TODO - implement NetizenBroker::findById
     throw "Not yet implemented";
 }
 
-Netizen NetizenBroker::matchAccount(string id, string psw)
+Netizen NetizenBroker::matchAccount(int id, QString psw)
 {
     //匹配id和密码是否正确
     //匹配成功就进行初始化

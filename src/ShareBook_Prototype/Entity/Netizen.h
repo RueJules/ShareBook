@@ -9,6 +9,8 @@
 #include "NoteProxy.h"
 #include "NetizenProxy.h"
 #include "MessageProxy.h"
+#include <unordered_map>
+
 class Netizen : public NetizenInterface {
 
 public:
@@ -16,6 +18,8 @@ public:
     virtual void addFan(QString fanId, NetizenProxy fan);//添加新的分析
     virtual void addConcern(QString concernId, NetizenProxy concern);//添加新的关注
 
+    //构造函数
+    Netizen(int id, QString psw, QString nickname, QPixmap profile, std::unordered_map<int, NoteProxy> &publishl, std::unordered_map<int, NetizenProxy> &fanl, std::unordered_map<int, NetizenProxy> &concernl, std::unordered_map<int, MessageProxy> messagel);
     QString get_nickName();
     QPixmap get_profileImage();
     void get_publishNoteIdList();
@@ -28,10 +32,10 @@ private:
     QString m_password;
     QString m_nickName;
     QPixmap m_profileImage;
-    unorder_map<int, NoteProxy> m_pulishNoteList;
-    unorder_map<int, NetizenProxy> m_fanList;
-    unorder_map<int, NetizenProxy> m_concernList;
-    unorder_map<int, MessageProxy> m_messageList;
+    std::unordered_map<int, NoteProxy> m_pulishNoteList;
+    std::unordered_map<int, NetizenProxy> m_fanList;
+    std::unordered_map<int, NetizenProxy> m_concernList;
+    std::unordered_map<int, MessageProxy> m_messageList;
     bool m_newNoteMessage;
 
 };

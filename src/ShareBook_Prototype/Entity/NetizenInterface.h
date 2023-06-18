@@ -15,6 +15,8 @@ public:
     virtual void addConcern(QString concernId, NetizenProxy concern)=0;//添加新的关注
     int get_id(){return m_id;}
 
+    NetizenInterface(int id);
+
 private:
     int m_id;
 

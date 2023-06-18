@@ -13,12 +13,14 @@ public:
     static MaterialBroker instance();
     Material findById(int id); //根据id在数据库中查找对象，返回查找到的对象
     void storeObject(Material material); //将实例对象存入数据库
+    ~MaterialBroker();
 
 private:
     MaterialBroker();//私有构造函数，单例模式
 
 private:
-    MaterialBroker instance;  //代管者实例
+    static std::shared_ptr<MaterialBroker> s_instance;  //代管者实例
+    static std::mutex materialBrokerMutex;
 };
 
 #endif // MATERIALBROKER_H

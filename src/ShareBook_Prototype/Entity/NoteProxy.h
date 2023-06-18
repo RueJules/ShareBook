@@ -1,12 +1,15 @@
 #ifndef NOTEPROXY_H
 #define NOTEPROXY_H
-
+#include "Note.h"
 class NoteProxy : NoteInterface {
 
 public:
-	Note* m_note;
+    NoteProxy(Note &note);
 
 	json getAbstract();
+
+private:
+    Note* m_note;
 };
 
 #endif

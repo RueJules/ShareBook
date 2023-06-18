@@ -1,6 +1,6 @@
 #include "MessageBroker.h"
 
-Message MessageBroker::findById(QString Id) {
+Message MessageBroker::findById(int Id) {
 	// TODO - implement MessageBroker::findById
 	throw "Not yet implemented";
 }
