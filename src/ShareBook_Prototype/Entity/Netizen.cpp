@@ -4,24 +4,27 @@
 */
 #include "Netizen.h"
 
-void Netizen::addNote(QString noteId, NoteProxy note)
-{
-
-}
-
-void Netizen::addFan(QString fanId, NetizenProxy fan)
-{
-
-}
-
-void Netizen::addConcern(QString concernId, NetizenProxy concern)
-{
-
-}
-
 Netizen::Netizen(int id, QString psw, QString nickname, QPixmap profile, std::unordered_map<int, NoteProxy> &publishl, std::unordered_map<int, NetizenProxy> &fanl, std::unordered_map<int, NetizenProxy> &concernl, std::unordered_map<int, MessageProxy> messagel):NetizenInterface(id)
 {
     //初始化赋值
+}
+void Netizen::addNote(int noteId, NoteProxy note)
+{
+    m_pulishNoteList.emplace(noteId,note);
+}
+
+void Netizen::addFan(int fanId, NetizenProxy fan)
+{
+    m_fanList.emplace(fanId,fan);
+}
+
+void Netizen::addConcern(int concernId, NetizenProxy concern)
+{
+    m_concernList.emplace(concernId,concern);
+}
+
+void  Netizen::addMessage(int messageId, MessageProxy message){
+    m_messageList.emplace(messageId,message);
 }
 
 QString Netizen::get_nickName()
@@ -50,9 +53,5 @@ void Netizen::get_concernIdList()
     //查看关注列表会调用
 }
 
-void Netizen::addMessage(int megId, MessageProxy message)
-{
-
-}
 
 

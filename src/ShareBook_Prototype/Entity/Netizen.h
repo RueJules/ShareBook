@@ -14,18 +14,19 @@
 class Netizen : public NetizenInterface {
 
 public:
-    virtual void addNote(QString noteId, NoteProxy note);//添加新发布的笔记，应该是返回bool类型？？
-    virtual void addFan(QString fanId, NetizenProxy fan);//添加新的分析
-    virtual void addConcern(QString concernId, NetizenProxy concern);//添加新的关注
-
     //构造函数
     Netizen(int id, QString psw, QString nickname, QPixmap profile, std::unordered_map<int, NoteProxy> &publishl, std::unordered_map<int, NetizenProxy> &fanl, std::unordered_map<int, NetizenProxy> &concernl, std::unordered_map<int, MessageProxy> messagel);
+
+    void addNote(int noteId, NoteProxy note) override;//添加新发布的笔记，应该是返回bool类型？？
+    void addFan(int fanId, NetizenProxy fan) override;//添加新的分析
+    void addConcern(int concernId, NetizenProxy concern) override;//添加新的关注
+    void addMessage(int messageId, MessageProxy message) override;//添加新的消息
+
     QString get_nickName();
     QPixmap get_profileImage();
     void get_publishNoteIdList();
     void get_fanIdList();
     void get_concernIdList();
-    void addMessage(int megId, MessageProxy message);//添加新的消息（从数据库中拉receiveMessage会调用）
 
 private:
 

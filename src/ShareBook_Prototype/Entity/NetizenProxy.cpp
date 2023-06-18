@@ -4,49 +4,45 @@
 */
 #include "NetizenProxy.h"
 
-void NetizenProxy::addNote(QString noteId, NoteProxy note)
+NetizenProxy::NetizenProxy(int id):NetizenInterface{id}
 {
 
 }
 
-void NetizenProxy::addFan(QString fanId, NetizenProxy fan)
+NetizenProxy::NetizenProxy(int id, Netizen &netizen):NetizenInterface{id},m_netizen{netizen}
 {
 
 }
 
-void NetizenProxy::addConcern(QString concernId, NetizenProxy concern)
+void NetizenProxy::addNote(int noteId, NoteProxy note)
 {
-
+    m_netizen->addNote(noteId,note);
 }
 
-NetizenProxy::NetizenProxy(Netizen &netizen):m_netizen(netizen)
+void NetizenProxy::addFan(int fanId, NetizenProxy fan)
 {
+    m_netizen->addFan(fanId,fan);
+}
 
+void NetizenProxy::addConcern(int concernId, NetizenProxy concern)
+{
+    m_netizen->addConcern(concernId,concern);
+}
+
+void NetizenProxy::addMessage(int messageId, MessageProxy message)
+{
+    m_netizen->addMessage(messageId,message);
 }
 
 json NetizenProxy::getAbstract(string netizenId) {
-	// TODO - implement NetizenProxy::getAbstract
-	throw "Not yet implemented";
+
 }
 json NetizenProxy::getDetails(string netizenId) {
-    // TODO - implement NetizenProxy::getDetails
-    throw "Not yet implemented";
+
 }
 
-//void NetizenProxy::sendMessage(Message message) {
-//    QList fans=m_netizen->get_fanIdList(); //返回一个粉丝id列表
-//    for(auto fan:fans)
-//    {
-//        //向数据库中指定写入的数据，有发送方的id,发送的消息类型，接收方的id
-//        //write(message,fan.get_id());
-
-//    }
-//}
-
-
 void NetizenProxy::receiveMessage() {
-	// TODO - implement NetizenProxy::receiveMessage
-	throw "Not yet implemented";
+
 }
 
 
