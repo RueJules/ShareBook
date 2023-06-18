@@ -13,13 +13,14 @@ private:
     QString m_title;
     QString m_text;
     std::vector<Material> m_materials;
+    int m_materialCount;
     //std::vector<QString> m_keyword;
     QDateTime m_time;
 
 
 public:
 //    Note(string blogger, string title,string text,vector<Material> materials,vector<string> keyword,QDateTime time);
-    Note(int blogger, QString title,QString text,std::vector<Material> materials,QDateTime time);
+    Note(int blogger, QString title,QString text,int material,std::vector<Material> materials,QDateTime time);
 
     int get_blogger();  //获得改条博主的id
     QString get_title(); //获取笔记标题

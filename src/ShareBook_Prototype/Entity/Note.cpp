@@ -7,8 +7,8 @@
     vector<string> m_keyword;
     QDateTime m_time;
  */
-Note::Note(int id, int blogger, QString title, QString text, std::vector<Material> materials, QDateTime time)
-    :NoteInterface(id),m_blogger{blogger},m_title{title},m_text(text), m_materials{materials},m_text{text},m_time{time}
+Note::Note(int id, int blogger, QString title, QString text, std::vector<Material> materials, int material,QDateTime time)
+    :NoteInterface(id),m_blogger{blogger},m_title{title},m_text(text), m_material{material}, m_materials{materials},m_time{time}
 {
 
 }

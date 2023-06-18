@@ -1,7 +1,7 @@
-#include "database.h"
+#include "RelationalBroker.h"
 #include <iostream>
 
-DataBase::DataBase()
+RelationalBroker::RelationalBroker()
 {
     //安装驱动
     sql::Driver* driver = sql::mariadb::get_driver_instance();
@@ -15,28 +15,27 @@ DataBase::DataBase()
     m_conn=std::move(conn);
 }
 
-/*void DataBase::connectDB()
+sql::ResultSet* RelationalBroker::query(QString cmd)
 {
-//    //安装驱动
-//    sql::Driver* driver = sql::mariadb::get_driver_instance();
+    try{
+        std::unique_ptr<sql::PreparedStatement> stmntQ(m_conn->prepareStatement(cmd));
+        sql::ResultSet *res = stmntQ->executeQuery(cmd);
+        return res;
 
-//    //配置连接
-//    sql::SQLString url("jdbc:mariadb://localhost:3306/todo");
-//    sql::Properties properties({{"user", "app_user"}, {"password", "Password123!"}});
+    }catch(sql::SQLException &e){
+        std::cerr << "Error selecting tasks: " << e.what() << std::endl;
+    }
+    return nullptr;
+}
 
-//    //建立连接
-//    std::unique_ptr<sql::Connection> conn(driver->connect(url, properties));
-//    m_conn=std::move(conn);
-}*/
-
-void DataBase::insert()
+void RelationalBroker::insert(QString cmd)
 {
     try{
     // Create a new PreparedStatement
-    std::unique_ptr<sql::PreparedStatement> stmnt(m_conn->prepareStatement("insert into netizen(nickname,profile_photo,concerns,fans,messages) values ('龚颜鲜', 'profile_photo', 1, 2, 3)"));
+    std::unique_ptr<sql::PreparedStatement> stmnt(m_conn->prepareStatement(cmd));
 
     // Bind values to SQL statement
-//    stmnt->setString(1, des);
+   //    stmnt->setString(1, des);
 
     // Execute query
     stmnt->executeQuery();
@@ -44,3 +43,36 @@ void DataBase::insert()
         std::cerr << "Error selecting tasks: " << e.what() << std::endl;
     }
 }
+
+void RelationalBroker::update(QString cmd)
+{
+    try{
+        // Create a new PreparedStatement
+        std::unique_ptr<sql::PreparedStatement> stmnt(m_conn->prepareStatement(cmd));
+
+        // Execute query
+        stmnt->executeQuery();
+
+    }catch(sql::SQLException& e){
+        std::cerr << "Error selecting tasks: " << e.what() << std::endl;
+    }
+}
+
+void RelationalBroker::drop(QString cmd)
+{
+    try{
+        // Create a new PreparedStatement
+        std::unique_ptr<sql::PreparedStatement> stmnt(m_conn->prepareStatement(cmd));
+
+        // Execute query
+        stmnt->executeQuery();
+    }catch(sql::SQLException& e){
+        std::cerr << "Error selecting tasks: " << e.what() << std::endl;
+    }
+}
+
+
+/*void DataBase::connectDB()
+{
+
+}*/
