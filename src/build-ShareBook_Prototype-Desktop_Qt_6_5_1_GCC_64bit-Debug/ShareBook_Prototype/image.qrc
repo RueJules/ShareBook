@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>UI/image/checkmark.svg</file>
+        <file>UI/image/cross.svg</file>
+        <file>UI/image/evil.svg</file>
+        <file>UI/image/home.svg</file>
+        <file>UI/image/plus.svg</file>
+    </qresource>
+</RCC>

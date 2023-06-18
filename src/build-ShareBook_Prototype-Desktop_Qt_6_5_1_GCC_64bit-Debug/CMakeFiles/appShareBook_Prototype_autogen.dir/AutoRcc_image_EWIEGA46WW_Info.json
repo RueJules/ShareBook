@@ -1,0 +1,26 @@
+{
+	"BUILD_DIR" : "/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/build-ShareBook_Prototype-Desktop_Qt_6_5_1_GCC_64bit-Debug/appShareBook_Prototype_autogen",
+	"CMAKE_BINARY_DIR" : "/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/build-ShareBook_Prototype-Desktop_Qt_6_5_1_GCC_64bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/build-ShareBook_Prototype-Desktop_Qt_6_5_1_GCC_64bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype",
+	"CMAKE_SOURCE_DIR" : "/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype",
+	"INCLUDE_DIR" : "/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/build-ShareBook_Prototype-Desktop_Qt_6_5_1_GCC_64bit-Debug/appShareBook_Prototype_autogen/include",
+	"INPUTS" : 
+	[
+		"/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype/UI/image/evil.svg",
+		"/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype/UI/image/home.svg",
+		"/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype/UI/image/checkmark.svg",
+		"/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype/UI/image/cross.svg",
+		"/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype/UI/image/plus.svg"
+	],
+	"LOCK_FILE" : "/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/build-ShareBook_Prototype-Desktop_Qt_6_5_1_GCC_64bit-Debug/CMakeFiles/appShareBook_Prototype_autogen.dir/AutoRcc_image_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "image" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_image.cpp",
+	"RCC_EXECUTABLE" : "/opt/Qt/6.5.1/gcc_64/./libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/build-ShareBook_Prototype-Desktop_Qt_6_5_1_GCC_64bit-Debug/CMakeFiles/appShareBook_Prototype_autogen.dir/AutoRcc_image_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype/image.qrc",
+	"VERBOSITY" : 0
+}

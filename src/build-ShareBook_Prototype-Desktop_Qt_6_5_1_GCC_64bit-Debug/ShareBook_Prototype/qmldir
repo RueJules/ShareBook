@@ -1,0 +1,7 @@
+module ShareBook_Prototype
+typeinfo appShareBook_Prototype.qmltypes
+prefer :/ShareBook_Prototype/
+Main 1.0 /run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype/./Main.qml
+EditDialog 1.0 /run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype/./UI/EditDialog.qml
+Main 1.0 /run/media/root/linux/school_have_many_P/important_pro/ShareBook/ShareBook/src/ShareBook_Prototype/./UI/Main.qml
+
