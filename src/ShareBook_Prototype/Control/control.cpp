@@ -13,12 +13,11 @@
 #include "../DataBroker/materialBroker.h"
 
 std::unique_ptr<NetizenProxy> Control::s_localNetizenProxy=nullptr;
-std::unique_ptr<NetizenBroker> netizenbroker=nullptr;
+
 void Control::init(int id, std::string password)
 {
-    netizenbroker=NetizenBroker::getInstance(); //单例broker
     std::unique_ptr<Netizen> localNetizen=std::make_unique<Netizen>();
-    netizenbroker->matchAccount(id,password,*localNetizen);//访问数据库读取网民，会获取网民所有信息，包括的粉丝列表，关注者列表....的一个json文件。然后用文件的内容来创建对象
+    NetizenBroker::getInstance()->matchAccount(id,password,*localNetizen);//访问数据库读取网民，会获取网民所有信息，包括的粉丝列表，关注者列表....的一个json文件。然后用文件的内容来创建对象
     //读取成功
     if(localNetizen->id()){
         s_localNetizenProxy=std::make_unique<NetizenProxy>(localNetizen->id(),std::move(localNetizen));
@@ -57,7 +56,7 @@ void Control::requestPublish()//从ui传来的用户输入的笔记数据，现�
     QDateTime time=QDateTime::currentDateTime();
 
     //将笔记存入数据库
-    int  noteId=NoteBroker::getInstance()->storeObject(title, text, materials.size(),time,
+    int  noteId=NoteBroker::getInstance()->storeObject(title, text, materials.size(),materials[0].toStdString(),time,
                                                        s_localNetizenProxy->id());
     //更新网民发布笔记对应的数据库表
     NetizenBroker::getInstance()->updataObject(s_localNetizenProxy->id(),noteId);
@@ -65,14 +64,28 @@ void Control::requestPublish()//从ui传来的用户输入的笔记数据，现�
     //把笔记对应的素材存入数据库的素材表
     MaterialBroker::getInstance()->storeObject(materials, noteId);  //素材顺序由容器数组下标获取
     //创建note实例
-    createNote(noteId,title,text,materials.size(),time,s_localNetizenProxy->id());
+    createNote(noteId,title,text,materials.size(),materials[0].toStdString(),time,s_localNetizenProxy->id());
     s_localNetizenProxy->sendMessage("发布了一条笔记");
 }
-void Control::createNote(int noteId,std::string title, std::string text, int materials,QDateTime time,int bloggerId)
+void Control::createNote(int noteId,std::string title, std::string text, int materials,std::string imgsrc,QDateTime time,int bloggerId)
 {
     //创建一个笔记对象
-    std::unique_ptr<Note>note = make_unique< Note>(noteId,title, text, materials,time,bloggerId);
+    std::unique_ptr<Note>note = make_unique< Note>(noteId,title, text, materials,imgsrc,time,bloggerId);
     NoteProxy noteProxy(noteId,std::move(note));
     //更新网民实例的发布笔记列表
     s_localNetizenProxy->addNote(noteId,std::move(noteProxy));
+}
+void Control::getPublishNote()
+{
+    int bloggerId = s_localNetizenProxy->id();
+    std::string cmd = "select * from note where blogger = "+std::to_string(bloggerId);
+    //getNoteAbstract(bloggerId)
+    sql::ResultSet *res = NoteBroker::getInstance()->query(cmd);
+    while(res->next()){
+        m_titles.append(res->getString("title").c_str());
+        m_texts.append(res->getString("text").substr(0, 10).c_str());
+    }
+    for(int i = 0; i < m_titles.size(); i++){
+        qDebug() << m_titles[i] <<"--------------" << m_texts[i];
+    }
 }

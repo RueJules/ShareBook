@@ -8,14 +8,14 @@ Date:2023.6.19*/
 #include <mutex>
 
 
-class NoteBroker : RelationalBroker {
+class NoteBroker : public RelationalBroker {
 
 
 public:
     static std::shared_ptr<NoteBroker> getInstance();//获取单例
 //    Note *findById(int noteId);
 //    std::vector<int> findMaterials(int id);
-    int storeObject(std::string title, std::string text, int materialsCount,QDateTime time ,int bloggerID);
+    int storeObject(std::string title, std::string text, int materialsCount,std::string imgsrc,QDateTime time ,int bloggerID);
     ~NoteBroker();
 
 private:

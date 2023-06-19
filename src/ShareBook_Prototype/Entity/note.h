@@ -14,13 +14,14 @@ private:
     std::string m_text;
     QDateTime m_time;
     int m_materialCount;
+    std::string m_firstImgsrc;
     std::unordered_map<int, MaterialProxy> m_materials;//初始化为空，点击查看详情时再加入列表中
 
     //std::vector<std::string> m_keyword;
 
 
 public:
-    Note(int id, std::string title, std::string text, int materialCount,QDateTime time,int blogger);//从数据库读取数据生成笔记
+    Note(int id, std::string title, std::string text, int materialCount,std::string imgsrc,QDateTime time,int blogger);//从数据库读取数据生成笔记
     int get_blogger();  //获得改条博主的id
     std::string get_title(); //获取笔记标题
     std::string get_text();//获取文本

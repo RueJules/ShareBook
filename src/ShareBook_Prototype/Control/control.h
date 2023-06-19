@@ -15,12 +15,14 @@ class Control:public QObject{
 public:
     void init(int id=1,std::string password="123456");//初始化用户信息(从边界类获取输入的信息，此时只使用默认)
     Q_INVOKABLE void requestPublish();//返回创建的笔记的id
-    void createNote(int noteId,std::string title, std::string text, int materials,QDateTime time,int bloggerId);
-
+    void createNote(int noteId,std::string title, std::string text, int materials,std::string imgsrc,QDateTime time,int bloggerId);
+    void getPublishNote();
 private:
 
     static std::unique_ptr<NetizenProxy> s_localNetizenProxy;//当前登陆的网民的代理;
-    std::shared_ptr<NetizenBroker> netizenbroker;
+    QList<std::string>m_texts;
+    QList<std::string>m_titles;
+
 };
 
 #endif
