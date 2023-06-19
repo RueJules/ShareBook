@@ -21,9 +21,9 @@ ApplicationWindow {
     }
 
     //Content Area
-    TextArea {
-        text: qsTr("Hello World")
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
+    Button{
+        text:"发布笔记"
+        onClicked:
+            control.requestPublish();
     }
 }
