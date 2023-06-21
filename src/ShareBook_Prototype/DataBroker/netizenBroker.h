@@ -9,7 +9,7 @@
 #include "../Entity/netizen.h"
 #include "relationalBroker.h"
 
-class NetizenBroker : RelationalBroker {
+class NetizenBroker : public RelationalBroker {
 
 public:
     ~NetizenBroker();

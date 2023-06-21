@@ -9,7 +9,7 @@ Date:2023.6.17*/
 
 
 
-class MessageBroker : RelationalBroker {
+class MessageBroker : public RelationalBroker {
 
 
 public:

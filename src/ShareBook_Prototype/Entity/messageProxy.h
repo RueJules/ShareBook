@@ -11,7 +11,7 @@ class MessageProxy : MessageInterface {
 public:
     std::string readMessage();
     MessageProxy(int id);
-    MessageProxy(int id,std::unique_ptr<Message> message);
+    MessageProxy(int id,std::unique_ptr<Message> &&message);
     void setMessage(Message &message);
 
 private:

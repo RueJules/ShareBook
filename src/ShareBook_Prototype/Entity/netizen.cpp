@@ -17,20 +17,20 @@ Netizen::Netizen():NetizenInterface{0}{}
 //{
 //    m_pulishNoteList.emplace(noteId,note);
 //}
-void Netizen::addNote(int noteId, NoteProxy note)
+void Netizen::addNote(int noteId, NoteProxy &&note)
 {
     m_pulishNoteList.emplace(noteId,std::move(note));
 }
-void Netizen::addFan(int fanId, NetizenProxy fan)
+void Netizen::addFan(int fanId, NetizenProxy &&fan)
 {
     m_fanList.emplace(fanId,std::move(fan));
 }
 
-void Netizen::addConcern(int concernId, NetizenProxy concern)
+void Netizen::addConcern(int concernId, NetizenProxy &&concern)
 {
     m_concernList.emplace(concernId,std::move(concern));
 }
-void  Netizen::addMessage(int messageId, MessageProxy message){
+void  Netizen::addMessage(int messageId, MessageProxy &&message){
     m_messageList.emplace(messageId,std::move(message));
 }
 

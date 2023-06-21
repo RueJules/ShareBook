@@ -44,10 +44,10 @@ std::shared_ptr<NoteBroker> NoteBroker::getInstance()
 //    Note newNote(noteId, bloggerId,  title,  text, findMaterials(noteId), materialCount,time); //没有返回值？？应该new一个对象吧
 //}
 
-int NoteBroker::storeObject(std::string title, std::string text, int materialsCount,std::string imgsrc,QDateTime time ,int bloggerID) {
+int NoteBroker::storeObject(std::string title, std::string content, int materialsCount,std::string imgsrc,QDateTime time ,int bloggerID) {
     //在数据库中插入笔记
     std::string insert_cmd = "insert into note(title,text,materials,thumbnail,time,blogger) values(\""
-                      +title+"\",\""+text+"\","+std::to_string(materialsCount)+",\""+imgsrc+"\",\""+
+                      +title+"\",\""+content+"\","+std::to_string(materialsCount)+",\""+imgsrc+"\",\""+
                       time.toString("yyyyMMddhhmmss").toStdString()+"\","+std::to_string(bloggerID)+")";
 //    qDebug()<<insert_cmd;
     insert(insert_cmd);

@@ -13,7 +13,7 @@ MessageProxy::MessageProxy(int id):MessageInterface{id}
 
 }
 
-MessageProxy::MessageProxy(int id,std::unique_ptr<Message>message):MessageInterface{id},m_message{std::move(message)}
+MessageProxy::MessageProxy(int id,std::unique_ptr<Message>&&message):MessageInterface{id},m_message{std::move(message)}
 {
 }
 

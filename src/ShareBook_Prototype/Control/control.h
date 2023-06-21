@@ -20,8 +20,8 @@ public:
 private:
 
     static std::unique_ptr<NetizenProxy> s_localNetizenProxy;//当前登陆的网民的代理;
-    QList<std::string>m_texts;
-    QList<std::string>m_titles;
+//    QList<std::string>m_texts;
+//    QList<std::string>m_titles;
 
 };
 

@@ -8,7 +8,7 @@ class NoteProxy : public NoteInterface {
 public:
 
     NoteProxy(int id);
-    NoteProxy(int id,std::unique_ptr<Note> note);
+    NoteProxy(int id,std::unique_ptr<Note>&& note);
 
 
 //	json getAbstract();

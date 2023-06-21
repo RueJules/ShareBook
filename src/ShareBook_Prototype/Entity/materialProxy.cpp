@@ -8,7 +8,7 @@ MaterialProxy::MaterialProxy(int id):MaterialInterface{id},m_material{nullptr}
 {
 
 }
-MaterialProxy::MaterialProxy(int id, std::unique_ptr<Material>material):MaterialInterface{id},m_material{std::move(material)}
+MaterialProxy::MaterialProxy(int id, std::unique_ptr<Material>&&material):MaterialInterface{id},m_material{std::move(material)}
 {
 
 }

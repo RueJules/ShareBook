@@ -77,15 +77,15 @@ void Control::createNote(int noteId,std::string title, std::string text, int mat
 }
 void Control::getPublishNote()
 {
-    int bloggerId = s_localNetizenProxy->id();
-    std::string cmd = "select * from note where blogger = "+std::to_string(bloggerId);
-    //getNoteAbstract(bloggerId)
-    sql::ResultSet *res = NoteBroker::getInstance()->query(cmd);
-    while(res->next()){
-        m_titles.append(res->getString("title").c_str());
-        m_texts.append(res->getString("text").substr(0, 10).c_str());
-    }
-    for(int i = 0; i < m_titles.size(); i++){
-        qDebug() << m_titles[i] <<"--------------" << m_texts[i];
-    }
+//    int bloggerId = s_localNetizenProxy->id();
+//    std::string cmd = "select * from note where blogger = "+std::to_string(bloggerId);
+//    //getNoteAbstract(bloggerId)
+//    sql::ResultSet *res = NoteBroker::getInstance()->query(cmd);
+//    while(res->next()){
+//        m_titles.append(res->getString("title").c_str());
+//        m_texts.append(res->getString("text").substr(0, 10).c_str());
+//    }
+//    for(int i = 0; i < m_titles.size(); i++){
+//        qDebug() << m_titles[i] <<"--------------" << m_texts[i];
+//    }
 }

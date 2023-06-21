@@ -10,7 +10,7 @@ class MaterialProxy:MaterialInterface
 {
 public:
     MaterialProxy(int id);
-    MaterialProxy(int id,std::unique_ptr<Material> material);
+    MaterialProxy(int id,std::unique_ptr<Material> &&material);
 //    void setMaterial(Material &mtr);
     //void preview()
 

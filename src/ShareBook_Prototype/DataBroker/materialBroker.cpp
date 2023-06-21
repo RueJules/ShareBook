@@ -18,6 +18,7 @@ MaterialBroker::MaterialBroker()
 }
 std::shared_ptr<MaterialBroker> MaterialBroker::getInstance()
 {
+    //可以用call_once和once_flag替换
     if (s_materialBroker == nullptr) {
         std::unique_lock<std::mutex> lock(materialBrokerMutex);
         if (s_materialBroker == nullptr) {
