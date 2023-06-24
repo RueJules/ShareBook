@@ -44,46 +44,47 @@ ApplicationWindow {
             model: ListViewModel
 
             delegate: Item {
+                property int id:note_id
                 width: parent.width
                 height: 300
+                Image {
+                    id: profileImg
+                    source: qsTr(profile)
+                    width: 50
+                    height: 50
 
+                }
                 Text {
                     id: nicknameText
                     text: qsTr(nickname)
-                    //anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: 18
-
+                    anchors.left: profileImg.right
                 }
 
-//                Image {
-//                    id: profileImg
-//                    source: qsTr(profile)
-//                    anchors.verticalCenter: parent.verticalCenter
-//                    width: 20
-//                    height: 20
-//                    x: 100
-//                }
+
                 Image {
                     id: material
                     source: qsTr(firstImg)
-                    //anchors.verticalCenter: parent.verticalCenter
-                    width: 50
-                    height: 50
-                    anchors.top:nicknameText.bottom
+                    width: 100
+                    height: 100
+                    anchors.top:profileImg.bottom
                 }
                 Text {
                     id: titleText
                     text: qsTr(title)
                     //anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: 18
+
                     anchors.top:material.bottom
                 }
 
                 Text {
                     id: contentText
+                    width: parent.width
                     text: qsTr(content)
                     //anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: 18
+                    wrapMode: Text.WordWrap //换行
                     anchors.top:titleText.bottom
 
                 }
@@ -97,6 +98,14 @@ ApplicationWindow {
                     font.pixelSize: 18
                     anchors.top:contentText.bottom
 
+                }
+                TapHandler{
+                    //anchors.fill:parent
+                    onTapped: {
+                        console.log("点击详情")
+                        control.getNoteDetails(id)
+
+                    }
                 }
             }
         }

@@ -82,8 +82,9 @@ void Control::requestPublish()//从ui传来的用户输入的笔记数据，现�
     NoteProxy noteProxy(noteId,std::move(note));
     //更新网民实例的发布笔记列表
     s_localNetizenProxy->addNote(noteId,std::move(noteProxy));
-
-    s_localNetizenProxy->sendMessage("发布了一条笔记");
+    //有粉丝就通知粉丝发了新消息
+    if(s_localNetizenProxy->fansCount())
+        s_localNetizenProxy->sendMessage("发布了一条笔记");
 }
 
 void Control::getNotes()
@@ -98,9 +99,12 @@ void Control::getNoteDetails(int noteId)
     std::unique_ptr<Note> note=model->findNoteInfoInModel(noteId);
     NoteProxy noteProxy(noteId,std::move(note));
     std::vector<MaterialProxy> materials = MaterialBroker::getInstance()->getNoteMaterials(noteId);
+
     for(int i=0;i<materials.size();i++){
-        note->addMaterial(materials[i].get_id(), std::move(materials[i]));
+        noteProxy.addMaterial(materials[i].get_id(), std::move(materials[i]));
+        qDebug()<<materials[i].get_id();
     }
+
     //更新网民实例的浏览笔记列表
     s_localNetizenProxy->addFootMark(noteId, std::move(noteProxy));
     NetizenBroker::getInstance()->updateCheckNote(s_localNetizenProxy->id(), noteId);

@@ -74,7 +74,7 @@ int NoteBroker::storeObject(std::string title, std::string content, int material
 //}
 sql::ResultSet *NoteBroker::getNotes(int netizenId)
 {
-    std::string query1 = "select note.* ,netizen.nickname ,netizen.profile_photo from note,netizen where note.blogger<> "+std::to_string(netizenId)+" and note.blogger=netizen.id limit 0,10";
+    std::string query1 = "select note.* ,netizen.nickname ,netizen.profile_photo from note,netizen where note.blogger<> "+std::to_string(netizenId)+" and note.blogger=netizen.id  order by note.time DESC limit 0,10";
     return query(query1);
 }
 

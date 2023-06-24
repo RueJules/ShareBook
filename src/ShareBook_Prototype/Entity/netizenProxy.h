@@ -22,6 +22,7 @@ public:
     void addFootMark(int checkNoteId, NoteProxy &&checkNote) override; //将查看了详情的笔记加入历史记录
 
 //    json getAbstract(int netizenId);//获取网民的概要信息（在显示笔记、评论、消息时）包括网民的头像和昵称
+    int fansCount();//获取粉丝数量
     void getDetails();//获取网民的详细信息（在展示个人主页时）
     void sendMessage(std::string content);//给网民发送消息
 //    void receiveMessage();//网民查看到自己有未读消息时（newMessage属性为true）从数据库中拉取消息到消息列表中

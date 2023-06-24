@@ -57,7 +57,9 @@ void NetizenProxy::sendMessage(std::string content)
     QList<int> fans = m_netizen->get_fanIdList();
     MessageBroker::getInstance()->storeObject(content, myself, fans);
 }
-
+int NetizenProxy::fansCount(){
+    return m_netizen->get_fanIdList().size();
+}
 
 //json NetizenProxy::getAbstract(string netizenId) {
 

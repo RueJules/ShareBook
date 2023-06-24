@@ -19,7 +19,7 @@ public:
     void init(int id=1,std::string password="123456");//初始化用户信息(从边界类获取输入的信息，此时只使用默认)
     Q_INVOKABLE void requestPublish();//返回创建的笔记的id
     Q_INVOKABLE void getNotes();
-    void getNoteDetails(int noteId);
+    Q_INVOKABLE void getNoteDetails(int noteId);
     void getPublishNotes();
 //    void setModel(MyListViewModel *newModel){
 //        model = newModel;
