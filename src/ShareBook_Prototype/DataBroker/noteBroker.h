@@ -7,7 +7,6 @@ Date:2023.6.19*/
 #include <vector>
 #include <mutex>
 
-
 class NoteBroker : public RelationalBroker {
 
 
@@ -17,7 +16,7 @@ public:
 //    std::vector<int> findMaterials(int id);
     int storeObject(std::string title, std::string content, int materialsCount,std::string imgsrc,QDateTime time ,int bloggerID);
     ~NoteBroker();
-
+    sql::ResultSet * getNotes(int netizenId);
 private:
     NoteBroker();
     static std::shared_ptr<NoteBroker> s_noteBroker;

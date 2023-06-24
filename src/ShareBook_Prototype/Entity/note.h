@@ -26,7 +26,8 @@ public:
     std::string get_title(); //获取笔记标题
     std::string get_text();//获取文本
     QDateTime get_time(); //获取笔记发布时间
-//    std::vector<int> get_materials(); //获取素材
+    void addMAterial(int materiaId,MaterialProxy materialproxy);
+//   std::vector<int> get_materials(); //获取素材
     //std::vector<string> get_keyword();先不做了
 
 

@@ -9,3 +9,8 @@ NoteProxy::NoteProxy(int id, std::unique_ptr<Note>&&note):NoteInterface{id},m_no
 {
 
 }
+
+void NoteProxy::addMAterial(int materiaId, MaterialProxy materialproxy)
+{
+    m_note->addMAterial(materiaId,materialproxy);
+}

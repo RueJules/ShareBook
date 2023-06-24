@@ -14,6 +14,23 @@ NoteBroker::~NoteBroker()
 
 }
 
+sql::ResultSet *NoteBroker::getNotes(int netizenId)
+{
+     //toux ,nnic,tit,con,su,noteid
+  //  Note(int id, std::string title, std::string text, int materialCount,std::string imgsrc,QDateTime time,int blogger);//从数据库读取数据生成笔记
+
+    std::string query1 = "select "
+                          "no.id , no.title , no.text , no.materials , no.imgsrc , no.time , no.blogger"
+                          "ni.profile_photo ,ni.nickname"
+                          "from note no , netizen ni"
+                          "where no.blogger != " + std::to_string(netizenId)+
+                          "and no.blogger=ni.id"+
+                          "limit 0,10";
+    sql::ResultSet *resSet1 = query(query1);
+    return resSet1;
+
+}
+
 std::shared_ptr<NoteBroker> NoteBroker::getInstance()
 {
     if(s_noteBroker == nullptr){

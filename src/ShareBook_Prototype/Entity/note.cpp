@@ -27,6 +27,11 @@ QDateTime Note::get_time()
     return m_time;
 }
 
+void Note::addMAterial(int materiaId, MaterialProxy materialproxy)
+{
+    m_materials[materiaId]=materialproxy;
+}
+
 //std::vector<int> Note::get_materials() {
 //	// TODO - implement Note::get_materials
 //	throw "Not yet implemented";
