@@ -9,7 +9,7 @@ public:
 
     NoteProxy(int id);
     NoteProxy(int id,std::unique_ptr<Note>&& note);
-    void addMAterial(int materiaId,MaterialProxy materialproxy);
+    void addMaterial(int materialId,MaterialProxy &&material)override;
 
 //	json getAbstract();
 

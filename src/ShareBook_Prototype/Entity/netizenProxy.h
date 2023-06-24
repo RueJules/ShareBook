@@ -19,6 +19,7 @@ public:
     void addFan(int fanId, NetizenProxy && fan) override;//添加新的分析
     void addConcern(int concernId, NetizenProxy &&concern) override;//添加新的关注
     void addMessage(int messageId, MessageProxy &&message) override;//添加新的关注
+    void addFootMark(int checkNoteId, NoteProxy &&checkNote) override; //将查看了详情的笔记加入历史记录
 
 //    json getAbstract(int netizenId);//获取网民的概要信息（在显示笔记、评论、消息时）包括网民的头像和昵称
     void getDetails();//获取网民的详细信息（在展示个人主页时）

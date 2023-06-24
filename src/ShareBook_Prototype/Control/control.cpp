@@ -12,10 +12,12 @@
 #include "../DataBroker/noteBroker.h"
 #include "../DataBroker/materialBroker.h"
 
+
 std::unique_ptr<NetizenProxy> Control::s_localNetizenProxy=nullptr;
 
 void Control::init(int id, std::string password)
 {
+    //model=new MyListViewModel();
     std::unique_ptr<Netizen> localNetizen=std::make_unique<Netizen>();
     NetizenBroker::getInstance()->matchAccount(id,password,*localNetizen);//访问数据库读取网民，会获取网民所有信息，包括的粉丝列表，关注者列表....的一个json文件。然后用文件的内容来创建对象
     //读取成功
@@ -46,36 +48,66 @@ void Control::requestPublish()//从ui传来的用户输入的笔记数据，现�
     }
     //读文本文件
     QFile file(textFile);
-    file.open(QIODevice::ReadOnly);
-    QTextStream ts(&file);
-    std::string  title = ts.readLine().simplified().toStdString();  //读取标题，如果标题那一行没有内容返回的是一个空字符
-    std::string  text = ts.readAll().simplified().toStdString(); //消除换行符
-    file.close();
-    qDebug()<<title<<text;
+    std::string  title;
+    std::string  text;
+    if(file.open(QIODevice::ReadOnly)) {
+        QTextStream ts(&file);
+        title= ts.readLine().simplified().toStdString();  //读取标题，如果标题那一行没有内容返回的是一个空字符
+        text = ts.readAll().simplified().toStdString(); //消除换行符
+        file.close();
+        qDebug()<<title<<text;
+    }
+    //读素材文件
+    int count=0;
+    std::string  firstImg;
+    if(materials.size()){
+        count=materials.size();
+        firstImg=materials[0].toStdString();
+    }
+
     //获取笔记的发布时间
     QDateTime time=QDateTime::currentDateTime();
 
     //将笔记存入数据库
-    int  noteId=NoteBroker::getInstance()->storeObject(title, text, materials.size(),materials[0].toStdString(),time,
-                                                       s_localNetizenProxy->id());
+    int  noteId=NoteBroker::getInstance()->storeObject(title, text,count,firstImg,time,s_localNetizenProxy->id());
     //更新网民发布笔记对应的数据库表
-    NetizenBroker::getInstance()->updataObject(s_localNetizenProxy->id(),noteId);
+    NetizenBroker::getInstance()->updatePublishNote(s_localNetizenProxy->id(),noteId);
 
     //把笔记对应的素材存入数据库的素材表
-    MaterialBroker::getInstance()->storeObject(materials, noteId);  //素材顺序由容器数组下标获取
+    if(count)
+        MaterialBroker::getInstance()->storeObject(materials, noteId);  //素材顺序由容器数组下标获取
     //创建note实例
-    createNote(noteId,title,text,materials.size(),materials[0].toStdString(),time,s_localNetizenProxy->id());
-    s_localNetizenProxy->sendMessage("发布了一条笔记");
-}
-void Control::createNote(int noteId,std::string title, std::string text, int materials,std::string imgsrc,QDateTime time,int bloggerId)
-{
     //创建一个笔记对象
-    std::unique_ptr<Note>note = make_unique< Note>(noteId,title, text, materials,imgsrc,time,bloggerId);
+    std::unique_ptr<Note>note = make_unique< Note>(noteId,title, text, count,firstImg,time,s_localNetizenProxy->id());
     NoteProxy noteProxy(noteId,std::move(note));
     //更新网民实例的发布笔记列表
     s_localNetizenProxy->addNote(noteId,std::move(noteProxy));
+
+    s_localNetizenProxy->sendMessage("发布了一条笔记");
 }
-void Control::getPublishNote()
+
+void Control::getNotes()
+{
+    sql::ResultSet *res=NoteBroker::getInstance()->getNotes(s_localNetizenProxy->id());
+    model->append(res);
+}
+
+void Control::getNoteDetails(int noteId)
+{
+    //创建一个笔记对象
+    std::unique_ptr<Note> note=model->findNoteInfoInModel(noteId);
+    NoteProxy noteProxy(noteId,std::move(note));
+    std::vector<MaterialProxy> materials = MaterialBroker::getInstance()->getNoteMaterials(noteId);
+    for(int i=0;i<materials.size();i++){
+        note->addMaterial(materials[i].get_id(), std::move(materials[i]));
+    }
+    //更新网民实例的浏览笔记列表
+    s_localNetizenProxy->addFootMark(noteId, std::move(noteProxy));
+    NetizenBroker::getInstance()->updateCheckNote(s_localNetizenProxy->id(), noteId);
+
+
+}
+void Control::getPublishNotes()
 {
 //    int bloggerId = s_localNetizenProxy->id();
 //    std::string cmd = "select * from note where blogger = "+std::to_string(bloggerId);

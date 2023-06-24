@@ -1,8 +1,12 @@
 #include "materialBroker.h"
+#include "../Entity/materialProxy.h"
 #include <QByteArray>
 #include <QBuffer>
 #include <QDebug>
 #include <mutex>
+#include <QPixmap>
+#include <QString>
+#include <memory>
 
 std::shared_ptr<MaterialBroker> MaterialBroker::s_materialBroker=nullptr;
 std::mutex MaterialBroker::materialBrokerMutex;
@@ -10,6 +14,23 @@ std::mutex MaterialBroker::materialBrokerMutex;
 MaterialBroker::~MaterialBroker()
 {
 
+}
+
+std::vector<MaterialProxy> MaterialBroker::getNoteMaterials(int noteId)
+{
+    std::string cmd = "select *from material where note_id=" + std::to_string(noteId);
+    sql::ResultSet *res = query(cmd);
+    std::vector<MaterialProxy> mas;
+    while(res->next()){
+        int id = res->getInt(1);
+        std::string imageSrc = res->getString(2).c_str();
+        QPixmap pixmap(QString::fromStdString(imageSrc));
+        int order = res->getInt(3);
+        std::unique_ptr<Material> material = std::make_unique<Material>(id, pixmap, order);
+        MaterialProxy mp(id,std::move(material));
+        mas.emplace_back(std::move(mp));
+    }
+    return mas;
 }
 
 MaterialBroker::MaterialBroker()

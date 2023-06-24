@@ -25,11 +25,13 @@ public:
     void addFan(int fanId, NetizenProxy &&fan) override;//添加新的分析
     void addConcern(int concernId, NetizenProxy &&concern) override;//添加新的关注
     void addMessage(int messageId, MessageProxy &&message) override;//添加新的消息
+    void addFootMark(int checkNoteId, NoteProxy &&checkNote) override;
 
     QList<int> get_publishNoteIdList();
     QList<int> get_fanIdList();
     QList<int> get_concernIdList();
     QList<int> get_messageIdList();
+     //QList<int> get_footMatkList();
 
     std::string password() const;
     void setPassword(const std::string &newPassword);
@@ -47,9 +49,11 @@ private:
     std::string m_nickName;
     std::string m_profileImage;//头像路径
     std::unordered_map<int, NoteProxy> m_pulishNoteList;
+    std::unordered_map<int, NoteProxy> m_footMarkList;
     std::unordered_map<int, NetizenProxy> m_fanList;
     std::unordered_map<int, NetizenProxy> m_concernList;
     std::unordered_map<int, MessageProxy> m_messageList;
+
 //    bool m_newNoteMessage;
 
 };

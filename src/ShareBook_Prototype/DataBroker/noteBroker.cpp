@@ -14,23 +14,6 @@ NoteBroker::~NoteBroker()
 
 }
 
-sql::ResultSet *NoteBroker::getNotes(int netizenId)
-{
-     //toux ,nnic,tit,con,su,noteid
-  //  Note(int id, std::string title, std::string text, int materialCount,std::string imgsrc,QDateTime time,int blogger);//从数据库读取数据生成笔记
-
-    std::string query1 = "select "
-                          "no.id , no.title , no.text , no.materials , no.imgsrc , no.time , no.blogger"
-                          "ni.profile_photo ,ni.nickname"
-                          "from note no , netizen ni"
-                          "where no.blogger != " + std::to_string(netizenId)+
-                          "and no.blogger=ni.id"+
-                          "limit 0,10";
-    sql::ResultSet *resSet1 = query(query1);
-    return resSet1;
-
-}
-
 std::shared_ptr<NoteBroker> NoteBroker::getInstance()
 {
     if(s_noteBroker == nullptr){
@@ -63,7 +46,7 @@ std::shared_ptr<NoteBroker> NoteBroker::getInstance()
 
 int NoteBroker::storeObject(std::string title, std::string content, int materialsCount,std::string imgsrc,QDateTime time ,int bloggerID) {
     //在数据库中插入笔记
-    std::string insert_cmd = "insert into note(title,text,materials,thumbnail,time,blogger) values(\""
+    std::string insert_cmd = "insert into note(title,content,materials,firstImg,time,blogger) values(\""
                       +title+"\",\""+content+"\","+std::to_string(materialsCount)+",\""+imgsrc+"\",\""+
                       time.toString("yyyyMMddhhmmss").toStdString()+"\","+std::to_string(bloggerID)+")";
 //    qDebug()<<insert_cmd;
@@ -89,6 +72,10 @@ int NoteBroker::storeObject(std::string title, std::string content, int material
 //    }
 //    return fans;
 //}
-
+sql::ResultSet *NoteBroker::getNotes(int netizenId)
+{
+    std::string query1 = "select note.* ,netizen.nickname ,netizen.profile_photo from note,netizen where note.blogger<> "+std::to_string(netizenId)+" and note.blogger=netizen.id limit 0,10";
+    return query(query1);
+}
 
 

@@ -40,6 +40,11 @@ void NetizenProxy::addMessage(int messageId, MessageProxy &&message)
 {
     m_netizen->addMessage(messageId,std::move(message));
 }
+
+void NetizenProxy::addFootMark(int checkNoteId, NoteProxy &&checkNote)
+{
+     m_netizen->addFootMark(checkNoteId, std::move(checkNote));
+}
 void NetizenProxy::getDetails()
 {
 

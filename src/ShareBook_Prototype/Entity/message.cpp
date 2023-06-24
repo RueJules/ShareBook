@@ -6,7 +6,7 @@ Date:2023.6.17*/
 
 //}
 
-Message::Message(int id,QDateTime date, int sender, std::string text, int recevie):MessageInterface{id}, m_time(date),m_sender(sender),m_text(text),  m_recevie(recevie)
+Message::Message(int id,QDateTime date, int sender, std::string text, int recipient):MessageInterface{id}, m_time(date),m_sender(sender),m_text(text),  m_recipient(recipient)
 {
 
 }

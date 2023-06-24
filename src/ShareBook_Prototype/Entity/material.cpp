@@ -3,7 +3,7 @@ Date:2023.6.17*/
 
 #include "material.h"
 
-Material::Material(int id,std::string imgsrc, int order):MaterialInterface(id),m_imgsrc{imgsrc},m_order{order}
+Material::Material(int id, QPixmap imgsrc, int order):MaterialInterface(id),m_imgsrc{imgsrc},m_order{order}
 {
 
 }

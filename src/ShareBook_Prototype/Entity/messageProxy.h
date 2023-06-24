@@ -9,10 +9,10 @@ Date:2023.6.17*/
 class MessageProxy : MessageInterface {
 
 public:
-    std::string readMessage();
+//    std::string readMessage();
     MessageProxy(int id);
     MessageProxy(int id,std::unique_ptr<Message> &&message);
-    void setMessage(Message &message);
+//    void setMessage(Message &message);
 
 private:
     std::unique_ptr<Message> m_message;

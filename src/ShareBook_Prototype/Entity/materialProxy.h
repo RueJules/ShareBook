@@ -6,11 +6,12 @@ Date:2023.6.17*/
 
 #include"material.h"
 
-class MaterialProxy:MaterialInterface
+class MaterialProxy: public MaterialInterface
 {
 public:
     MaterialProxy(int id);
     MaterialProxy(int id,std::unique_ptr<Material> &&material);
+    //MaterialProxy(const MaterialProxy&mp);
 //    void setMaterial(Material &mtr);
     //void preview()
 

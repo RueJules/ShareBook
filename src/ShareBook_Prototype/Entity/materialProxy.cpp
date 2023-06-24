@@ -12,5 +12,7 @@ MaterialProxy::MaterialProxy(int id, std::unique_ptr<Material>&&material):Materi
 {
 
 }
+//MaterialProxy::MaterialProxy(const MaterialProxy&mp):MaterialInterface{mp.m_id},m_material{std::move(mp.m_material)}{
+//}
 
 

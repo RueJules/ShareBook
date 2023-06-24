@@ -7,6 +7,7 @@ Date:2023.6.19*/
 #include <vector>
 #include <mutex>
 
+
 class NoteBroker : public RelationalBroker {
 
 

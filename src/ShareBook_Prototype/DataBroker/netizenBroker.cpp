@@ -35,7 +35,14 @@ std::shared_ptr<NetizenBroker> NetizenBroker::getInstance() {
     return s_netizenBroker;
 }
 
-void NetizenBroker::updataObject(int bloggerId,int noteId) {
+void NetizenBroker::updateCheckNote(int ownId, int noteId)
+{
+    std::string cmd = "insert into checked_note(netizen_id,note_id) value(" + std::to_string(ownId) + "," + std::to_string(noteId) +")";
+    insert(cmd);
+
+}
+
+void NetizenBroker::updatePublishNote(int bloggerId,int noteId) {
     std::string cmd="insert into published_note(blogger_id,note_id) value("+std::to_string(bloggerId)+","+std::to_string(noteId)+")";
     insert(cmd);
 }

@@ -20,7 +20,7 @@ private:
     std::string m_text;
     std::string m_nickname; //消息发送者的昵称
     QByteArray m_profileImage;  //消息发送者的头像
-    int m_recevie; //消息的接收者
+    int m_recipient; //消息的接收者
 
 };
 

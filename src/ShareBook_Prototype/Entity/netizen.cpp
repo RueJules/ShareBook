@@ -34,6 +34,11 @@ void  Netizen::addMessage(int messageId, MessageProxy &&message){
     m_messageList.emplace(messageId,std::move(message));
 }
 
+void Netizen::addFootMark(int checkNoteId, NoteProxy &&checkNote)
+{
+    m_footMarkList.emplace(checkNoteId, std::move(checkNote));
+}
+
 std::string Netizen::password() const
 {
     return m_password;

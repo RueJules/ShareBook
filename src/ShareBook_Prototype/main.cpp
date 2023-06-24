@@ -12,9 +12,11 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    Control *control=new Control();
+    MyListViewModel *listModel=new MyListViewModel();
+    Control *control=new Control(listModel);
     control->init();
     engine.rootContext()->setContextProperty("control", control);
+    engine.rootContext()->setContextProperty("ListViewModel",listModel);
     const QUrl url(u"qrc:/ShareBook_Prototype/Main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
         &app, []() { QCoreApplication::exit(-1); },
