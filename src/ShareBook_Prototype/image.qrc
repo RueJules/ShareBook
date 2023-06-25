@@ -1,15 +1,21 @@
 <RCC>
     <qresource prefix="/">
-        <file>UI/image/checkmark.svg</file>
-        <file>UI/image/cross.svg</file>
-        <file>UI/image/evil.svg</file>
-        <file>UI/image/home.svg</file>
-        <file>UI/image/plus.svg</file>
-        <file>profiles/54CC58EC79BE67C4732A8524737DB2CD.jpg</file>
-        <file>profiles/5DA91C2ABC683C5803AF57E9C1C6B6F3.jpg</file>
-        <file>profiles/C9450EADFAAF21E4211FA25E89F3AA7E.jpg</file>
-        <file>profiles/F786E192C12AA776F39152D5302C16B4.jpg</file>
-        <file>materials/00B1D3A613245B5A6EEC55A2DDFF7E3B.jpg</file>
-        <file>materials/C25B263BAA19262C7D81B25EF4708C09.jpg</file>
+        <file>resource_file/materials/00B1D3A613245B5A6EEC55A2DDFF7E3B.jpg</file>
+        <file>resource_file/materials/C25B263BAA19262C7D81B25EF4708C09.jpg</file>
+        <file>resource_file/profiles/54CC58EC79BE67C4732A8524737DB2CD.jpg</file>
+        <file>resource_file/profiles/5DA91C2ABC683C5803AF57E9C1C6B6F3.jpg</file>
+        <file>resource_file/profiles/C9450EADFAAF21E4211FA25E89F3AA7E.jpg</file>
+        <file>resource_file/profiles/F786E192C12AA776F39152D5302C16B4.jpg</file>
+        <file>UI/icon/checkmark.svg</file>
+        <file>UI/icon/cross.svg</file>
+        <file>UI/icon/evil.svg</file>
+        <file>UI/icon/home.svg</file>
+        <file>UI/icon/plus.svg</file>
+        <file>UI/icon/envelop.svg</file>
+        <file>UI/icon/film.svg</file>
+        <file>UI/icon/search.svg</file>
+        <file>UI/icon/list2.svg</file>
+        <file>resource_file/materials/F14DD3857A93A079A65677476D459162.jpg</file>
+        <file>UI/icon/return.svg</file>
     </qresource>
 </RCC>

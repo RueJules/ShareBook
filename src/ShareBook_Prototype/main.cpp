@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     control->init();
     engine.rootContext()->setContextProperty("control", control);
     engine.rootContext()->setContextProperty("ListViewModel",listModel);
-    const QUrl url(u"qrc:/ShareBook_Prototype/Main.qml"_qs);
+    const QUrl url(u"../ShareBook_Prototype/UI/Main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
         &app, []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);

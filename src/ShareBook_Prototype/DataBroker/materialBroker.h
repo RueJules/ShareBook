@@ -13,7 +13,7 @@ public:
     static  std::shared_ptr<MaterialBroker> getInstance();
 //    Material findById(int id); //根据id在数据库中查找对象，返回查找到的对象
     void storeObject(QStringList materials, int noteId); //将实例对象存入数据库
-    std::vector<MaterialProxy> getNoteMaterials(int noteId);
+    sql::ResultSet* getNoteMaterials(int noteId);
     ~MaterialBroker();
 
 private:

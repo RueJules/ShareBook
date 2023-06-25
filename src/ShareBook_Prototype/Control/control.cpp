@@ -93,22 +93,35 @@ void Control::getNotes()
     model->append(res);
 }
 
-void Control::getNoteDetails(int noteId)
+QList<QString> Control::getNoteDetails(int noteId)
 {
+    qDebug()<<"传递的id"<<noteId;
     //创建一个笔记对象
     std::unique_ptr<Note> note=model->findNoteInfoInModel(noteId);
     NoteProxy noteProxy(noteId,std::move(note));
-    std::vector<MaterialProxy> materials = MaterialBroker::getInstance()->getNoteMaterials(noteId);
-
-    for(int i=0;i<materials.size();i++){
-        noteProxy.addMaterial(materials[i].get_id(), std::move(materials[i]));
-        qDebug()<<materials[i].get_id();
+    sql::ResultSet* res = MaterialBroker::getInstance()->getNoteMaterials(noteId);
+    std::vector<MaterialProxy>mas;
+    QList<QString> materialModel;
+    while(res->next()){
+        int id = res->getInt(1);
+        QString imageSrc = QString::fromStdString(res->getString(2).c_str());
+        QPixmap pixmap(imageSrc);
+        int order = res->getInt(3);
+        std::unique_ptr<Material> material = std::make_unique<Material>(id, pixmap, order);
+        MaterialProxy mp(id,std::move(material));
+        mas.emplace_back(std::move(mp));
+        materialModel.append(imageSrc);
+    }
+    for(int i=0;i<mas.size();i++){
+        noteProxy.addMaterial(mas[i].get_id(), std::move(mas[i]));
+        qDebug()<<mas[i].get_id();
     }
 
     //更新网民实例的浏览笔记列表
     s_localNetizenProxy->addFootMark(noteId, std::move(noteProxy));
     NetizenBroker::getInstance()->updateCheckNote(s_localNetizenProxy->id(), noteId);
 
+    return materialModel;
 
 }
 void Control::getPublishNotes()

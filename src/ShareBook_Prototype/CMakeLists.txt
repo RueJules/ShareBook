@@ -10,7 +10,7 @@ qt_add_executable(appShareBook_Prototype)
 
 FILE(GLOB_RECURSE header CONFIGURE_DEPENDS include ./*.h)
 FILE(GLOB_RECURSE source CONFIGURE_DEPENDS include ./*.cpp)
-#FILE(GLOB_RECURSE qml CONFIGURE_DEPENDS include ./*.qml)
+FILE(GLOB_RECURSE qml CONFIGURE_DEPENDS include ./*.qml)
 target_sources(appShareBook_Prototype
     PRIVATE
         main.cpp
@@ -25,8 +25,7 @@ qt_add_qml_module(appShareBook_Prototype
     URI ShareBook_Prototype
     VERSION 1.0
     QML_FILES 
-#        ${qml}
-        Main.qml
+        ${qml}
         image.qrc
 )
 

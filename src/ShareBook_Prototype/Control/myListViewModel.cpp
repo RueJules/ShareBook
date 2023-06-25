@@ -10,6 +10,7 @@ std::unique_ptr<Note> MyListViewModel::findNoteInfoInModel(int noteId)
 {
     for(auto data:dataList){
         if(data.note_id==noteId){
+
             std::unique_ptr<Note>note=make_unique<Note>(data.note_id,data.title,data.content,data.materialCount,data.firstMaterial,QDateTime::fromString(QString::fromStdString(data.time), "yyyyMMddhhmmss"),data.blogger_id);
 
             return note;
