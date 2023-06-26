@@ -119,6 +119,10 @@ Page {
             id:view
             width: parent.width
             height: 700
+            Image{
+                fillMode: Image.PreserveAspectFit
+                source:detail[6]
+            }
             Repeater{
                 model:control.getNoteDetails(Number(detail[5]))  //c++端传来的素材路径
                 Image{
@@ -126,7 +130,6 @@ Page {
                     source:modelData
                 }
             }
-
         }
         //只有一张图片就不要这个
         PageIndicator {

@@ -17,7 +17,7 @@ public:
     Control(MyListViewModel*m):model{m}{}
     ~Control(){delete model;}
     void init(int id=1,std::string password="123456");//初始化用户信息(从边界类获取输入的信息，此时只使用默认)
-    Q_INVOKABLE void requestPublish();//返回创建的笔记的id
+    Q_INVOKABLE void requestPublish(QString title,QString content,QList<QString>materials);
     Q_INVOKABLE void getNotes();
     Q_INVOKABLE QList<QString> getNoteDetails(int noteId);
     void getPublishNotes();

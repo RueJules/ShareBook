@@ -6,14 +6,13 @@ ApplicationWindow {
     width: 543
     height: 1000
     visible: true
-    title: qsTr("享书---享你所享")
+    title: qsTr("享书---享你所想")
     Loader {
         id: loader
         anchors.fill: parent
         asynchronous: true
         source:"Home.qml"
         Component.onCompleted: {
-            console.log("首页")
             control.getNotes()
         }
     }

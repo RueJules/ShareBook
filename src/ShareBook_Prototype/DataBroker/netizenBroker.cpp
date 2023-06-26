@@ -13,14 +13,14 @@ std::shared_ptr<NetizenBroker> NetizenBroker::s_netizenBroker = nullptr;
 std::mutex NetizenBroker::netizenBrokerMutex;
 
 NetizenBroker::NetizenBroker()
-    {
-        std::cout << "构造函数" << std::endl;
-    }
+{
+
+}
 
 NetizenBroker::~NetizenBroker()
-    {
-        std::cout << "析构函数" << std::endl;
-    }
+{
+
+}
 
 std::shared_ptr<NetizenBroker> NetizenBroker::getInstance() {
     //这里使用了两个 if 判断语句进行双检锁
@@ -116,7 +116,5 @@ void NetizenBroker::matchAccount(int id, std::string psw,Netizen &netizen)
 
     }
     //todo: 提示网民用户名或密码不正确
-
-
 }
 

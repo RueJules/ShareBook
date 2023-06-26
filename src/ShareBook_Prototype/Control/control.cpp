@@ -27,37 +27,9 @@ void Control::init(int id, std::string password)
     s_localNetizenProxy->getDetails();
 }
 
-void Control::requestPublish()//从ui传来的用户输入的笔记数据，现在不做，现在是选择一个文件（一个txt文本文件和几个图片文件）
+void Control::requestPublish(QString title,QString content,QList<QString>materials)//从ui传来的用户输入的笔记数据，现在不做，现在是选择一个文件（一个txt文本文件和几个图片文件）
 {
-    //使用文件管理器进行文件的选择组成一个笔记
-    QStringList fileNames=QFileDialog::getOpenFileNames(nullptr,tr("选择文件"), "../file_material",
-                                                                    tr("File(*.txt* *.jpg* *.png* *.svg*)"),nullptr,QFileDialog::DontUseNativeDialog	);
-
-    //解析文件内容，分离出标题和文本内容，从fileNames中找到文本文件和图片文件
-    //文本的路径列表
-    QString textFile;
-    //素材的路径列表
-    QStringList materials;
-    //区分文本文件和图片文件
-    for(auto filename:fileNames){
-        if(filename.right(3) == "txt"){
-            textFile = filename;
-        }else{
-            materials.push_back(filename);
-        }
-    }
-    //读文本文件
-    QFile file(textFile);
-    std::string  title;
-    std::string  text;
-    if(file.open(QIODevice::ReadOnly)) {
-        QTextStream ts(&file);
-        title= ts.readLine().simplified().toStdString();  //读取标题，如果标题那一行没有内容返回的是一个空字符
-        text = ts.readAll().simplified().toStdString(); //消除换行符
-        file.close();
-        qDebug()<<title<<text;
-    }
-    //读素材文件
+    //判断有没有素材文件
     int count=0;
     std::string  firstImg;
     if(materials.size()){
@@ -69,8 +41,9 @@ void Control::requestPublish()//从ui传来的用户输入的笔记数据，现�
     QDateTime time=QDateTime::currentDateTime();
 
     //将笔记存入数据库
-    int  noteId=NoteBroker::getInstance()->storeObject(title, text,count,firstImg,time,s_localNetizenProxy->id());
+    int  noteId=NoteBroker::getInstance()->storeObject(title.toStdString(), content.toStdString(),count,firstImg,time,s_localNetizenProxy->id());
     //更新网民发布笔记对应的数据库表
+
     NetizenBroker::getInstance()->updatePublishNote(s_localNetizenProxy->id(),noteId);
 
     //把笔记对应的素材存入数据库的素材表
@@ -78,13 +51,13 @@ void Control::requestPublish()//从ui传来的用户输入的笔记数据，现�
         MaterialBroker::getInstance()->storeObject(materials, noteId);  //素材顺序由容器数组下标获取
     //创建note实例
     //创建一个笔记对象
-    std::unique_ptr<Note>note = make_unique< Note>(noteId,title, text, count,firstImg,time,s_localNetizenProxy->id());
+    std::unique_ptr<Note>note = make_unique< Note>(noteId,title.toStdString(), content.toStdString(), count,firstImg,time,s_localNetizenProxy->id());
     NoteProxy noteProxy(noteId,std::move(note));
     //更新网民实例的发布笔记列表
     s_localNetizenProxy->addNote(noteId,std::move(noteProxy));
     //有粉丝就通知粉丝发了新消息
     if(s_localNetizenProxy->fansCount())
-        s_localNetizenProxy->sendMessage("发布了一条笔记");
+        s_localNetizenProxy->sendMessage("你的关注发布了一条笔记");
 }
 
 void Control::getNotes()
@@ -95,7 +68,6 @@ void Control::getNotes()
 
 QList<QString> Control::getNoteDetails(int noteId)
 {
-    qDebug()<<"传递的id"<<noteId;
     //创建一个笔记对象
     std::unique_ptr<Note> note=model->findNoteInfoInModel(noteId);
     NoteProxy noteProxy(noteId,std::move(note));
@@ -114,13 +86,13 @@ QList<QString> Control::getNoteDetails(int noteId)
     }
     for(int i=0;i<mas.size();i++){
         noteProxy.addMaterial(mas[i].get_id(), std::move(mas[i]));
-        qDebug()<<mas[i].get_id();
     }
 
     //更新网民实例的浏览笔记列表
     s_localNetizenProxy->addFootMark(noteId, std::move(noteProxy));
     NetizenBroker::getInstance()->updateCheckNote(s_localNetizenProxy->id(), noteId);
-
+    if(materialModel.size()!=0)
+        materialModel.removeAt(0);
     return materialModel;
 
 }

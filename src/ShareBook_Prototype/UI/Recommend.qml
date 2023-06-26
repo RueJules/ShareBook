@@ -20,9 +20,9 @@ Item {
                 //OpacityMask使用时用到的rectangle和image必须在同一层级
                 Image {
                     id: material
-                    source: qsTr(firstImg)
+                    source: firstImg===""?"qrc:/resource_file/materials/2991e08f0e0926a5424c8cb73bca7742.png":qsTr(firstImg)
                     width: parent.width
-                    height:parent.height-90
+                    height:parent.height-115
                     fillMode: Image.PreserveAspectFit //缩放以适应屏幕
                     visible: false
 
@@ -43,13 +43,16 @@ Item {
                 }
                 Rectangle{
                     id:titleRec
-                    height: 35
+                    width: parent.width
+                    height:60
                     anchors.top:material.bottom
                     Text {
                         id: titleText
+                        width: parent.width
+                        anchors.verticalCenter:titleRec.verticalCenter
                         text: qsTr(title)
                         padding: 10
-                        anchors.verticalCenter:titleRec.verticalCenter
+                        wrapMode:Text.Wrap
                         font.pixelSize: 18
                     }
                 }
@@ -93,7 +96,7 @@ Item {
                 }
                 TapHandler{
                     onTapped: {
-                        var detail_data=[profile,nickname,title,content,time,id_]
+                        var detail_data=[profile,nickname,title,content,time,id_,material.source]
                         stack.push("NoteDetailPage.qml",{"data":detail_data})
                     }
                 }
