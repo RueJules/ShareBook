@@ -93,10 +93,8 @@ Item {
                 }
                 TapHandler{
                     onTapped: {
-                        console.log(id_)
-                        //control.getNoteDetails(id)
-
-                        stack.push("NoteDetailPage.qml",{"d_nickname":nicknameText.text},{"d_profile":profileImg.source},{"d_nickname":nicknameText.text},{"d_content":content},{"d_title":titleText.text},{"d_time":time},{"d_id":"5"})
+                        var detail_data=[profile,nickname,title,content,time,id_]
+                        stack.push("NoteDetailPage.qml",{"data":detail_data})
                     }
                 }
             }
